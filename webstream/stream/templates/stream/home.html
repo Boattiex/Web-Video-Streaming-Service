@@ -1,0 +1,77 @@
+{% extends "stream/base.html" %}
+{% load static %}
+{% block content %}
+
+<body class="body-home">
+<div class="row">
+    <div class="col-sm-6">
+        <h5 class="font-weight-bold"><i>Streaming user</i></h5>
+            <table id="myTable" border="1" style="overflow:auto">
+                <colgroup width="200">
+                <col span="1" style="background-color:red">
+                <col style="background-color:yellow">
+
+                <tr>
+                  <th>&nbsp&nbspNAME</th>
+                  <th>&nbsp&nbspSTATUS</th>
+                </tr>
+
+            </colgroup>
+        </table>
+    </div>
+
+    <div class="col-sm-6">
+         <h5 class="font-weight-bold"><i>Live now</i></h5>
+         <video class="center" id="video" width="600" controls></video>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest/dist/hls.min.js"></script>   
+   <script type="text/javascript">
+        var video = document.getElementById('video');
+        var table = document.getElementById('myTable');
+        var userSelected;
+
+       if(Hls.isSupported()) {
+         var hls = new Hls();
+         hls.loadSource('http://video.southeastasia.cloudapp.azure.com/live/'+userSelected+'/index.m3u8');
+         hls.attachMedia(video);
+         hls.on(Hls.Events.MANIFEST_PARSED,function() {
+                   video.play();
+       });
+      }
+       else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+         video.src = 'http://video.southeastasia.cloudapp.azure.com/live/'+userSelected+'/index.m3u8';
+         video.addEventListener('loadedmetadata',function() {
+           video.play();
+         });
+       }
+     
+
+      function get_json_data(){
+            var json_url = 'http://video.southeastasia.cloudapp.azure.com/api/';
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                append_json(data);
+              }
+            }
+
+         xmlhttp.open("POST", json_url, true);
+         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+         xmlhttp.send();
+      }
+
+       function append_json(data){
+           var table = document.getElementById('myTable');
+                 data.forEach(function(object) {
+                 var tr = document.createElement('tr');
+                 tr.innerHTML = '<td>' + object + '</td>';
+                 table.appendChild(tr);
+          });
+        }
+
+   </script>
+</body>
+ {% endblock content %}
