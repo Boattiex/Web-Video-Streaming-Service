@@ -4,7 +4,7 @@ Use Django + Nginx + Javascript
 This project was created for the Co-Operative Education (Year: 2019)
 
 at National Electronics and Computer Technology Center (NECTEC)
-with Internet Innovation Research Team (INO) in Thailand
+with Internet Innovation Research Team (INO) in Thailand.
 
 Especially my friend Thanawich In-um!
 
@@ -12,7 +12,7 @@ We learned about how to using linux (Ubuntu), docker, WebRTC (Kurento), GStreame
 
 In the End, We decided to use Django + Nginx!
 
-We are divided into 2 parts
+We are divided into 2 parts.
 1. Media Server 
 2. Application Server
 
