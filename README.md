@@ -6,7 +6,7 @@ This project was created for the Co-Operative Education (Year: 2019)
 at National Electronics and Computer Technology Center (NECTEC)
 with Internet Innovation Research Team (INO) in Thailand.
 
-Especially my friend Thanawich In-um!
+Especially my friend Thanawit In-um!
 
 We learned about how to using linux (Ubuntu), docker, WebRTC (Kurento), GStreamer, try to use API from program "NxWitness", Node.Js, Python and Django.
 
