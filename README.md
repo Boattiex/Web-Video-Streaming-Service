@@ -1,7 +1,7 @@
 # Web-Video-Streaming-Service
 Use Django + Nginx + Javascript
 
-This project was created for the Co-Operative Education (Year:2019)
+This project was created for the Co-Operative Education (Year: 2019)
 
 at National Electronics and Computer Technology Center (NECTEC)
 with Internet Innovation Research Team (INO) in Thailand
